@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Shashwat Bilgrami</title>
+    <title>Shashwat's Blog</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -29,7 +29,7 @@
             <a class="nav-link" href="{% static 'resume.pdf' %}">Resume</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+            <a class="nav-link active" href="{% url 'allblogs' %}">Blog</a>
           </li>
           <li class="nav-item">
           </li>
@@ -39,36 +39,19 @@
 </header>
 
 <main role="main">
+  <div class="container">
+  <h1 class="text-center pt-3">Welcome to Shashwat's Blog</h1>
+  <br />
+  <br />
+  <h2>Latest posts </h2>
+  {% for sblog in sblog.all %}
+  <a href=""><h3>{{sblog.title}}</h3></a>
+  {{  sblog.pub_date_pretty  }}
+  <br />
+  <p>{{sblog.summary}}</p>
+  <br />
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">Hi I am Shashwat</h1>
-      <p class="lead text-muted"> I do Web Development in Django Framework and writing blog is my hobby.</p>
-      <p>
-        <a href="mailto:bilgramishashwat@gmail.com" class="btn btn-primary my-2">Email me</a>
-      </p>
-      <img src="{% static 'sha.jpg' %}" height="300" />
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-        {% for jo in work.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow">
-
-            <div class="card-body">
-
-              <p class="card-text">{{jo.summary}}</p>
-
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
+  {% endfor %}
   </div>
 
 </main>
